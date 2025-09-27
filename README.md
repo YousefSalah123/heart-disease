@@ -1,173 +1,166 @@
-<div align="center">
-
-# ❤️ Heart Disease Risk Prediction
-
-**Heart disease risk prediction & exploratory analytics platform.**
-
-[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](#) [![Streamlit](https://img.shields.io/badge/Framework-Streamlit-ff4b4b.svg)](#) [![Live Demo](https://img.shields.io/badge/Live%20App-Streamlit-success.svg)](https://heart-disease-hfjjczmyditt8syxmwb2zv.streamlit.app/) [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)  
-<sub>Educational / research use only – *not* a medical diagnostic tool.</sub>
-
+<div id="header" align="center">
+  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
 </div>
 
----
+<div id="badges" align="center">
+  <a href="mailto:yousefsalahnage@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail Badge"/>
+  </a>
+  <a href="https://www.linkedin.com/in/yousef-salah-123/">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  </a>
+</div>
 
-## 🩺 Overview
-This repository contains an end‑to‑end machine learning workflow to estimate the probability of heart disease based on structured clinical indicators. It spans **data acquisition, cleaning, exploratory data analysis (EDA), feature engineering & selection, dimensionality reduction, supervised & unsupervised modeling, hyperparameter optimization, decision threshold tuning, model packaging, and deployment via a Streamlit web application** with interactive risk & confidence visualization.
+<h1 align="center">
+  Hey 👋, I'm Yousef Salah Nage
+  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
+</h1>
 
-> **Disclaimer:** The model and app are for **educational and research purposes only** and must **not** be used for real clinical decision-making.
+### 👨‍💻 About Me
 
-### 🔗 Live Demo
-Access the deployed Streamlit application here: **https://heart-disease-hfjjczmyditt8syxmwb2zv.streamlit.app/**
-
-## Team
-
-**Yousef Salah Nage**  
-AI & Machine Learning Enthusiast  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yousef-salah-nage-a3583636b)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/YousefSalah123)
-
-**Abdelrahman Mohsen**  
-AI & Machine Learning Enthusiast  
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abdelrahman-mohsen5600)
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/3bood5600)
-
-
-
-## 📊 Dataset
-Based on a heart disease clinical indicators dataset (UCI-style schema). Each record includes demographics (age, sex), vitals (resting blood pressure, cholesterol), stress test results (exercise-induced angina, ST depression, peak heart rate), and categorical cardiology assessments (chest pain type, slope, thalassemia markers).  
-
-### Key Preprocessing & Engineering Steps
-- Missing value handling & type normalization
-- Outlier awareness (IQR / distribution review)
-- Feature engineering: `chol_per_age`, `heart_rate_reserve`, and domain-driven categorical one-hot encodings
-- Standardization of numeric features (`StandardScaler` inside pipeline)
-- One-hot encoding of categorical features with unknown-safe handling
-- Optional dimensionality reduction exploration via **PCA** (variance retention analysis)
-- Multiple feature selection strategies: Random Forest & XGBoost importance, RFE, Chi-Square tests – consolidated into a stable subset (`selected_features.csv`)
-
-## 🧪 Project Workflow
-| Stage | Notebook(s) | Highlights |
-|-------|-------------|-----------|
-| Data Cleaning & EDA | `01_data_preprocessing`, `Final_EDA_Notebook` | Schema audit, distributions, correlations, class balance |
-| PCA Analysis | `02_pca_analysis` | Variance explained, component interpretation (exploratory) |
-| Feature Selection | `03_feature_selection` | Importance fusion (RF / XGBoost), RFE, Chi² scoring, final subset export |
-| Supervised Modeling | `04_supervised_learning`, `05_supervised_learning_comparison`, `Final_Modelling` | Logistic Regression, Decision Tree, Random Forest, SVM benchmarking |
-| Unsupervised Learning | `05_unsupervised_learning`, `06_unsupervised_learning` | K-Means, Hierarchical clustering – structure & grouping insight |
-| Hyperparameter Tuning | `06_hyperparameter_tuning`, `07_hyperparameter_tuning` | GridSearchCV / RandomizedSearchCV, CV diagnostics |
-| Model Refinement & Ensemble | comparative notebooks | Threshold analysis, probability calibration review, soft voting & stacking trials |
-| Final Export | `08_model_export_and_deployment` | Persist best pipeline & metadata (`best_model.pkl`, `best_model_report.json`) |
-| Streamlit App | `ui/app.py` | Interactive prediction, risk gradient bar, confidence gauge, insights pages |
-
-## 🏆 Final Model
-**Model:** Threshold‑Tuned SVC (`rbf` kernel)  
-**Best Probability Threshold:** `0.617` (optimizes balance of recall & precision)  
-**Core Preprocessing:** Standardized numerics + one-hot categorical features within pipeline.  
-
-| Metric | Value |
-|--------|-------|
-| Accuracy | 0.875 |
-| Precision | 0.8911 |
-| Recall | 0.8824 |
-| F1 Score | 0.8867 |
-| ROC AUC | 0.9063 |
-
-> Stored in `results/best_model_report.json` along with feature lists & preprocessing metadata.
-
-## 🖥️ Streamlit Web Application
-The app provides:
-1. **Prediction Form** – Structured user input with validation
-2. **Risk Score Visualization** – Horizontal gradient bar (green→orange→red) + threshold marker
-3. **Confidence Gauge** – Model confidence (% max(p, 1-p))
-4. **Risk Category & Threshold Context** – Clear label (Low / Moderate / High)
-5. **Feature Vector Preview & Export** – Downloadable CSV of the inference row
-6. **Models & Results Page** – Summary of comparative performance
-7. **Data & Insights Page** – Exploratory charts (class balance, distributions, correlations)
-
-Run it locally (see Installation).
-
-## 📂 Project Structure
-```
-├── data/
-│   └── selected_features.csv
-├── models/
-│   └── best_model.pkl
-├── notebooks/
-│   ├── 01_data_preprocessing (1).ipynb
-│   ├── 02_pca_analysis.ipynb
-│   ├── 03_feature_selection.ipynb
-│   ├── 04_supervised_learning.ipynb
-│   ├── 05_supervised_learning_comparison.ipynb
-│   ├── 05_unsupervised_learning.ipynb / 06_unsupervised_learning.ipynb
-│   ├── 06_hyperparameter_tuning.ipynb / 07_hyperparameter_tuning.ipynb
-│   ├── 08_model_export_and_deployment.ipynb
-│   └── Final_* (reference / consolidated)
-├── results/
-│   ├── best_model_report.json
-│   ├── best_models_summary.json
-│   └── tuning_cv_results.csv
-├── ui/
-│   └── app.py
-├── requirements.txt
-└── README.md
-```
-
-## ⚙️ Installation & Usage
-> Requires Python 3.10+ (tested) and pip.
-
-```bash
-git clone <repo_url>
-cd Heart_Disease_Project - Fiinal
-python -m venv .venv
-.venv\Scripts\activate  # Windows
-pip install -r requirements.txt
-streamlit run ui/app.py
-```
-
-### Programmatic Inference Example
-```python
-import joblib, pandas as pd, json
-model = joblib.load('models/best_model.pkl')
-with open('results/best_model_report.json') as f:
-    report = json.load(f)
-features = report['preprocessing']['numeric_features'] + report['preprocessing']['categorical_features']
-# df_new must contain ALL engineered & encoded columns
-proba = model.predict_proba(df_new[features])[:,1]
-pred = (proba >= report['best_threshold']).astype(int)
-```
-
-## 📈 Results & Visualizations
-- **ROC AUC ~0.91** indicates strong discriminative ability.
-- Calibrated threshold (0.617) improves balance vs naive 0.50 rule.
-- Engineered features (`chol_per_age`, `heart_rate_reserve`) contributed to lift in recall.
-- Feature importance & correlation analyses guide interpretability; clustering offered exploratory subgroup patterns (non-deployment).
-
-Potential example visuals (not embedded here):
-- ROC Curve & Precision-Recall Curve
-- Risk Probability Gradient Bar
-- Feature Importance Bars
-- Class Distribution & Correlation Heatmap
-
-## 🔄 Reproducibility & MLOps Principles
-- Deterministic seeds (`random_state=42`)
-- Immutable saved artifacts (`best_model.pkl`, reports, feature subsets)
-- Separation of **data prep / selection / modeling / evaluation / deployment** stages
-- Clear threshold documentation for decision layer
-- Modular transformation inside pipeline to minimize leakage
-
-## 🚀 Future Work
-- Add SHAP / permutation importance for model interpretability
-- Expand dataset (multi-source aggregation & temporal variables)
-- Try gradient boosting variants (LightGBM, CatBoost) & calibrated probabilities
-- Deploy via container + CI/CD (GitHub Actions) & cloud hosting
-- Add monitoring: drift detection, periodic re-training triggers
-- Privacy & security hardening (PII audits, model card)
-
-## 📜 License
-This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
-
-## ⚠️ Medical Disclaimer
-This project does **not** provide medical advice, diagnosis, or treatment. Always consult qualified healthcare professionals for clinical decisions.
+I am a motivated Computer Science student at Cairo University specializing in Machine Learning and Artificial Intelligence. My expertise lies in Python, C++, and Java, and I have hands-on experience building end-to-end ML projects—from data preprocessing and feature engineering to model training and deployment. With a strong foundation in mathematics (linear algebra, calculus, probability), I am passionate about leveraging data to drive real-world impact. I am actively seeking opportunities like internships and research collaborations to apply my technical skills and contribute to innovative AI solutions.
 
 ---
 
-<div align="center"><sub>Crafted with data science rigor for learning & experimentation.</sub></div>
+### 🛠️ My Skills
+
+#### 💻 Programming & Concepts
+![C++](https://img.shields.io/badge/C++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![OOP](https://img.shields.io/badge/OOP-Principles-blue?style=for-the-badge)
+![Data Structures](https://img.shields.io/badge/Data_Structures-orange?style=for-the-badge)
+![Algorithms](https://img.shields.io/badge/Algorithms-red?style=for-the-badge)
+
+#### 📊 Data Analysis & Machine Learning
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
+![Seaborn](https://img.shields.io/badge/Seaborn-%233776AB.svg?style=for-the-badge&logo=seaborn&logoColor=white)
+
+#### ⚙️ Tools & Other Technologies
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-025E8C?style=for-the-badge&logo=sql&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+![Qt](https://img.shields.io/badge/Qt-%23217346.svg?style=for-the-badge&logo=qt&logoColor=white)
+
+---
+
+### 🚀 My Projects
+
+#### 💳 Credit Card Default Prediction
+Developed a full-stack machine learning pipeline to predict credit card defaults using a dataset of 30,000+ clients. The project involved extensive data cleaning, feature engineering, and model tuning to prioritize recall.
+<p>
+  <a href="https://github.com/YousefSalah123/Credit-Card-Default-Prediction-using-Logistic-Regression" target="_blank">
+    <img src="https://img.shields.io/badge/Source_Code-181717?style=for-the-badge&logo=github&logoColor=white" alt="Source Code"/>
+  </a>
+  <a href="https://credit-card-default-prediction-using-logistic-regression-skw6g.streamlit.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Demo-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white" alt="Live Demo"/>
+  </a>
+</p>
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="python"/>
+  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat&logo=scikit-learn&logoColor=white" alt="scikit-learn"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="pandas"/>
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=Streamlit&logoColor=white" alt="streamlit"/>
+</p>
+
+---
+
+#### 🚕 NYC Taxi Trip Duration Prediction
+Built an end-to-end regression pipeline to predict NYC taxi trip durations. Engineered features from timestamps and GPS coordinates, including using the Haversine formula for distance calculation.
+<p>
+  <a href="https://github.com/YousefSalah123/NYC-Taxi-Duration-Prediction" target="_blank">
+    <img src="https://img.shields.io/badge/Source_Code-181717?style=for-the-badge&logo=github&logoColor=white" alt="Source Code"/>
+  </a>
+  <a href="https://nyc-taxi-duration-prediction-93j4vbvdjkwp6ds58yv92g.streamlit.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Demo-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white" alt="Live Demo"/>
+  </a>
+</p>
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="python"/>
+  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat&logo=scikit-learn&logoColor=white" alt="scikit-learn"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="pandas"/>
+  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=Streamlit&logoColor=white" alt="streamlit"/>
+</p>
+
+---
+
+#### ❤️ Heart Disease Prediction
+A machine learning model built to predict the likelihood of heart disease in patients based on a set of medical attributes.
+<p>
+  <a href="https://github.com/YousefSalah123/heart-disease" target="_blank">
+    <img src="https://img.shields.io/badge/Source_Code-181717?style=for-the-badge&logo=github&logoColor=white" alt="Source Code"/>
+  </a>
+  <a href="https://heart-disease-hfjjczmyditt8syxmwb2zv.streamlit.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live_Demo-FF4B4B?style=for-the-badge&logo=Streamlit&logoColor=white" alt="Live Demo"/>
+  </a>
+</p>
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white" alt="python"/>
+  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=flat&logo=scikit-learn&logoColor=white" alt="scikit-learn"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white" alt="pandas"/>
+</p>
+
+---
+
+### 🎓 Education
+
+- **Faculty of Science, Cairo University** | Oct 2023 - Oct 2027
+  - Bachelor's Degree in Computer Science
+  - Currently in 3rd Year, ranked 1st academically in the department
+  - GPA: 3.807/5.0
+
+---
+
+### 📜 Certificates
+
+- **Supervised Machine Learning: Regression and Classification**
+  - *Stanford University & DeepLearning.AI (Coursera)* - Issued Jul 2025
+  - <a href="https://www.coursera.org/account/accomplishments/verify/7O3FE6LNPLHY" target="_blank">**[Verified Certificate]**</a>
+
+- **Introducing Generative AI with AWS**
+  - *Udacity & Amazon Web Services (AWS)* - Issued Jul 2025
+  - <a href="https://www.udacity.com/certificate/e/7647d4f8-4ebb-11f0-ac38-63efc2f700c8" target="_blank">**[Verified Certificate]**</a>
+
+- **Machine Learning Foundations**
+  - *Amazon Web Services (AWS Educate)* - Issued 2025
+  - <a href="https://www.credly.com/badges/3359b0b3-96d8-47e2-a30b-6df76b133d7c/public_url" target="_blank">**[Verified Certificate]**</a>
+
+---
+
+### 🌐 Languages
+
+- **Arabic:** Native
+- **English:** B2 (Upper-Intermediate)
+- **German:** A1 (Elementary)
+
+---
+
+### 🤝 Volunteering
+
+- **Content Writer** | *TEDxYouth@Luxor STEM* (Feb 2022 - Aug 2023)
+  - Researched and created content for TEDx events, blogs, and promotional materials for STEM audiences.
+  - Collaborated with the social media team to ensure consistent messaging aligned with TEDx branding.
+
+---
+
+### 🎨 Hobbies & Interests
+
+- **Graphic Design:** [Check out my Behance Portfolio](https://www.behance.net/yousefsalah18)
+- **Content Writing:** Passionate about creating impactful written content.
+
+---
+
+### 📊 My GitHub Stats
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=YousefSalah123&show_icons=true&theme=dracula&include_all_commits=true&count_private=true"/>
+  <br/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=YousefSalah123&layout=compact&langs_count=8&theme=dracula"/>
+</p>
