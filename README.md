@@ -12,7 +12,7 @@
 </div>
 
 <h1 align="center">
-  Hey 👋, I'm Yousef Salah Nage
+  Hey 👋, I'm Yousef Salah
 </h1>
 
 ### 👨‍💻 About Me
