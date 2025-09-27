@@ -17,7 +17,7 @@
 
 ### 👨‍💻 About Me
 
-I am a motivated Computer Science student at Cairo University specializing in Machine Learning and Artificial Intelligence. My expertise lies in Python, C++, and Java, and I have hands-on experience building end-to-end ML projects—from data preprocessing and feature engineering to model training and deployment. With a strong foundation in mathematics (linear algebra, calculus, probability), I am passionate about leveraging data to drive real-world impact. I am actively seeking opportunities like internships and research collaborations to apply my technical skills and contribute to innovative AI solutions.
+Computer Science student at Cairo University driven by a passion for using Machine Learning to create real-world impact. I have a proven ability to develop complete ML projects, from data preprocessing to final deployment. With a strong grasp of Python, C++, and the mathematical principles of AI, I am eager to contribute my skills to a forward-thinking team through an internship or research collaboration.
 
 ---
 
